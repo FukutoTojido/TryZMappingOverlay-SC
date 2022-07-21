@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/bottom.css" />
+	<link rel="stylesheet" href="css/odometr.css" />
+	<link rel="stylesheet" href="css/middle.css" />
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="deps/countUp.js"></script>
+	<script src="deps/reconnecting-websocket.min.js"></script>
+<script src="/lib/consts.js"></script><script src="/lib/utils.js"></script><script src="/lib/tokenTransformer.js"></script>
+	<script src="deps/odometr.js"></script>
+	<script src="deps/Chart.min.js"></script>
+	<script src="deps/smooth.js"></script>
+	<script src="deps/average-color.js"></script>
+	<script src="deps/average-color.min.js"></script>
+</head>
+
+<body>
+	<div id="main">
+		<div id="mapBG"></div>
+		<div id="mapBGOverlay"></div>
+		<div id="middle">
+			<div id="ppNow" class="ppM"></div>
+			<div id="pp100" class="ppM"></div>
+			<div id="pp99" class="ppM"></div>
+			<div id="pp98" class="ppM"></div>
+			<div id="pp97" class="ppM"></div>
+			<div id="pp96" class="ppM"></div>
+			<div id="pp95" class="ppM"></div>
+		</div>
+
+		<div id="strainLine"></div>
+		<div id="strainGraph">
+			<div id="timeElapsed" class="time"></div>
+			<div id="timeLeft" class="time"></div>
+			<div id="progressBarBG"></div>
+			<div id="basegraph">
+				<canvas id="canvas" width="1700" height="6"></canvas>
+			</div>
+			<div id="progressBar"></div>
+		</div>
+
+		<div id="objectsCounter">
+			<div class="objectContainer">
+				<div class="icon">
+					<img src="https://osu.ppy.sh/images/layout/beatmapset-page/count_circles.svg" alt="circles">
+				</div>
+				<div id="circles" class="value"></div>
+			</div>
+			<div class="objectContainer">
+				<div class="icon">
+					<img src="https://osu.ppy.sh/images/layout/beatmapset-page/count_sliders.svg" alt="sliders">
+				</div>
+				<div id="sliders" class="value"></div>
+			</div>
+			<div class="objectContainer">
+				<div class="icon">
+					<img src="./static/count_spinners.png" alt="spinners">
+				</div>
+				<div id="spinners" class="value"></div>
+			</div>
+		</div>
+		<div id="SR">
+			<div id="currentSR"></div>/
+			<div id="maxSR"></div>
+		</div>
+		<div id="nowPlayingContainer">
+			<div id="mapThumb"></div>
+			<div id="textArea">
+				<div id="mapName"></div>
+				<div id="mapInfo"></div>
+				<div id="stats">
+					<div id="CS"></div>
+					<div id="AR"></div>
+					<div id="OD"></div>
+					<div id="HP"></div>
+					<div id="BPM"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<svg width="0" height="0">
+		<defs>
+			<clipPath id="myClip">
+				<polygon points="0,160 200,160 200,1000 0,1000" />
+				<polygon points="1920,160 1720,160 1720,1000 1920,1000" />
+			</clipPath>
+		</defs>
+	</svg>
+	<script src="index.js"></script>
+</body>
+
+</html>

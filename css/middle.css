@@ -1,0 +1,30 @@
+#middle {
+    width: 200px;
+    height: 300px;
+
+    margin-left: 1550px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    flex-wrap: wrap;
+
+    gap: 20px;
+	transition: ease-in-out 500ms;
+}
+
+.ppM {
+    width: 130px;
+    background-color: rgb(41, 29, 31);
+
+    color: white;
+    text-align: center;
+    font-weight: 900;
+    font-size: .6em;
+
+    padding: 15px 5px;
+    border-radius: 10px;
+
+    /* text-shadow: 0 2px 5px rgba(0 0 0 /.5); */
+    box-shadow: 0 5px 0 0 rgb(167, 53, 72);
+}
