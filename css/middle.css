@@ -1,8 +1,8 @@
 #middle {
+    position: absolute;
+    right: 150px;
     width: 200px;
     height: 300px;
-
-    margin-left: 1550px;
 
     display: flex;
     justify-content: flex-end;

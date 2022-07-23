@@ -134,29 +134,34 @@ socket2.onmessage = (event) => {
     }
 
     if (tempPP !== data.simulatedPp && data.simulatedPp !== undefined) {
-            tempPP = data.simulatedPp;
-            ppNow.innerHTML = tempPP;
-            animation.ppNow.update(ppNow.innerHTML);
+        tempPP = data.simulatedPp;
+        ppNow.innerHTML = tempPP;
+        animation.ppNow.update(ppNow.innerHTML);
     }
 
     for (let i = 0; i < 6; i++)
-        if (tempPPData[`temp${100 - i}`] !== data[`osu_${(i === 0 ? "SS" : 100 - i)}PP`] && data[`osu_${(i === 0 ? "SS" : 100 - i)}PP`] !== undefined) {
-            tempPPData[`temp${100 - i}`] = data[`osu_${(i === 0 ? "SS" : 100 - i)}PP`];
+        if (
+            tempPPData[`temp${100 - i}`] !==
+                data[`osu_${i === 0 ? "SS" : 100 - i}PP`] &&
+            data[`osu_${i === 0 ? "SS" : 100 - i}PP`] !== undefined
+        ) {
+            tempPPData[`temp${100 - i}`] =
+                data[`osu_${i === 0 ? "SS" : 100 - i}PP`];
             document.getElementById(`pp${100 - i}`).innerHTML = `${
                 100 - i
             }%: ${Math.round(tempPPData["temp" + (100 - i)])}pp`;
         }
 
     if (tempCircles !== data.circles && data.circles !== undefined) {
-        circles.innerHTML = `${data.circles}x`
+        circles.innerHTML = `${data.circles}x`;
     }
 
     if (tempSliders !== data.circles && data.sliders !== undefined) {
-        sliders.innerHTML = `${data.sliders}x`
+        sliders.innerHTML = `${data.sliders}x`;
     }
 
     if (tempSpinners !== data.circles && data.spinners !== undefined) {
-        spinners.innerHTML = `${data.spinners}x`
+        spinners.innerHTML = `${data.spinners}x`;
     }
 };
 
@@ -176,11 +181,11 @@ socket.onmessage = (event) => {
             .replace(/\\/g, "/")
             .replace(/'/g, "%27");
 
-        mapBG.style.backgroundImage = `url('http://${
-            window.overlay.config.host
-        }:${window.overlay.config.port}/Songs/${
-            data.menu.bm.path.full
-        }?a=${Math.random(10000)}')`;
+        // mapBG.style.backgroundImage = `url('http://${
+        //     window.overlay.config.host
+        // }:${window.overlay.config.port}/Songs/${
+        //     data.menu.bm.path.full
+        // }?a=${Math.random(10000)}')`;
         mapThumb.style.backgroundImage = `url('http://${
             window.overlay.config.host
         }:${window.overlay.config.port}/Songs/${
@@ -192,8 +197,8 @@ socket.onmessage = (event) => {
     if (gameState !== data.menu.state) {
         gameState = data.menu.state;
         middle.style.opacity = 1 * (gameState === 1) + 0;
-        mapBG.style.opacity = 1 * (gameState === 1) + 0;
-        mapBGOverlay.style.opacity = 1 * (gameState === 1) + 0;
+        // mapBG.style.opacity = 1 * (gameState === 1) + 0;
+        // mapBGOverlay.style.opacity = 1 * (gameState === 1) + 0;
         strainLine.style.opacity = 1 * (gameState === 1) + 0;
         strainGraph.style.opacity = 1 * (gameState === 1) + 0;
         objectsCounter.style.opacity = 1 * (gameState === 1) + 0;
@@ -249,8 +254,11 @@ socket.onmessage = (event) => {
         JSON.stringify(reduceArray(Object.values(data.menu.pp.strains), 100))
     ) {
         graphRaw = reduceArray(Object.values(data.menu.pp.strains), 100);
-        tempLink = JSON.stringify(reduceArray(Object.values(data.menu.pp.strains), 100));
-        if (Object.values(data.menu.pp.strains)) smoothed = smooth(graphRaw, smoothOffset);
+        tempLink = JSON.stringify(
+            reduceArray(Object.values(data.menu.pp.strains), 100)
+        );
+        if (Object.values(data.menu.pp.strains))
+            smoothed = smooth(graphRaw, smoothOffset);
         // config.data.datasets[0].data = smoothed;
         config.data.datasets[0].data = graphRaw;
         // config.data.datasets[0].backgroundColor = `rgba(${colorGet.r}, ${colorGet.g}, ${colorGet.b}, 0.2)`;
@@ -296,7 +304,10 @@ let config = {
                 // backgroundColor: "rgba(0, 0, 0, 0.7)",
                 borderWidth: "0",
                 backgroundColor(c) {
-                    let alpha = (c.dataset.data[c.dataIndex] / Math.max.apply(null, graphRaw)) * 0.6;
+                    let alpha =
+                        (c.dataset.data[c.dataIndex] /
+                            Math.max.apply(null, graphRaw)) *
+                        0.6;
                     // console.log(alpha);
                     return `rgba(255, 255, 255, ${alpha})`;
                 },

@@ -15,12 +15,12 @@ html {
 	font-family: Torus;
 	font-weight: normal;
 	color: white;
-	background-image: url('../static/5am.png');
+	/* background-image: url('../static/5am.png'); */
 	background-position: bottom;
 	background-repeat: no-repeat;
 	/* background-color: #15151e; */
 	background-size: 100%;
-	width: 1920px;
+	width: 100vw;
 	height: 1080px;
 	position: absolute;
 	z-index: -1;
@@ -60,6 +60,7 @@ html {
 
 #objectsCounter {
 	position: absolute;
+	left: 150px;
 	bottom: 260px;
 
 	width: 120px;
