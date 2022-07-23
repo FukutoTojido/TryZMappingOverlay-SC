@@ -117,6 +117,7 @@ window.onload = function () {
 };
 
 let trigger = false;
+let screenWidth = document.documentElement.clientWidth;
 
 socket2.onmessage = (event) => {
     let data = JSON.parse(event.data);
@@ -181,11 +182,11 @@ socket.onmessage = (event) => {
             .replace(/\\/g, "/")
             .replace(/'/g, "%27");
 
-        // mapBG.style.backgroundImage = `url('http://${
-        //     window.overlay.config.host
-        // }:${window.overlay.config.port}/Songs/${
-        //     data.menu.bm.path.full
-        // }?a=${Math.random(10000)}')`;
+        mapBG.style.backgroundImage = `url('http://${
+            window.overlay.config.host
+        }:${window.overlay.config.port}/Songs/${
+            data.menu.bm.path.full
+        }?a=${Math.random(10000)}')`;
         mapThumb.style.backgroundImage = `url('http://${
             window.overlay.config.host
         }:${window.overlay.config.port}/Songs/${
@@ -197,8 +198,8 @@ socket.onmessage = (event) => {
     if (gameState !== data.menu.state) {
         gameState = data.menu.state;
         middle.style.opacity = 1 * (gameState === 1) + 0;
-        // mapBG.style.opacity = 1 * (gameState === 1) + 0;
-        // mapBGOverlay.style.opacity = 1 * (gameState === 1) + 0;
+        mapBG.style.opacity = 1 * (gameState === 1) * (screenWidth === 1920) + 0;
+        mapBGOverlay.style.opacity = 1 * (gameState === 1) * (screenWidth === 1920) + 0;
         strainLine.style.opacity = 1 * (gameState === 1) + 0;
         strainGraph.style.opacity = 1 * (gameState === 1) + 0;
         objectsCounter.style.opacity = 1 * (gameState === 1) + 0;
